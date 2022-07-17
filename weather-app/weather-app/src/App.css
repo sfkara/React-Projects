@@ -1,0 +1,15 @@
+.app{
+    display: flex;
+    justify-content: center;
+    
+}
+
+h1{
+    display: flex;
+    justify-content: left;
+    background-color: sandybrown;
+    justify-content: center;
+    color: rebeccapurple;
+    align-content: center;
+    
+}
