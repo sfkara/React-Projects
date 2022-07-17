@@ -43,6 +43,7 @@ const App = () => {
           <input
             type="text"
             className="coin-input"
+            onChange={handleChange}
             placeholder="Search for a coin"
           />
         </form>
