@@ -5,12 +5,12 @@ import Values from 'values.js'
 const App = () => {
   const [color, setColor] = useState('')
   const [error, setError] = useState(false)
-  const [lst, setLst] = useState([])
+  const [lst, setLst] = useState(new Values('#92b1f8').all(10))
 
   const handleSubmit = (e) => {
     try {
       e.preventDefault()
-      let colors = new Values(color).all(10)
+      let colors = new Values(color).all(5)
       setLst(colors)
       console.log(colors)
     } catch (error) {
@@ -30,7 +30,7 @@ const App = () => {
             onChange={(e) => {
               setColor(e.target.value)
             }}
-            placeholder="#333555777"
+            placeholder="#92b1f8"
             className={`${error ? 'error' : null}`}
           />
           <button type="submit" className="btn">
@@ -42,7 +42,14 @@ const App = () => {
       <section className="colors">
         {lst.map((color, index) => {
           console.log(color)
-          return <SingleColor key={index} {...color} index={index} />
+          return (
+            <SingleColor
+              key={index}
+              {...color}
+              index={index}
+              hexColor={color.hex}
+            />
+          )
         })}
       </section>
     </>
