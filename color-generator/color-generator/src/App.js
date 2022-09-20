@@ -8,8 +8,15 @@ const App = () => {
   const [lst, setLst] = useState([])
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('f u science')
+    try {
+      e.preventDefault()
+      let colors = new Values(color).all(10)
+      setLst(colors)
+      console.log(colors)
+    } catch (error) {
+      setError(true)
+      console.log(error)
+    }
   }
 
   return (
@@ -24,6 +31,7 @@ const App = () => {
               setColor(e.target.value)
             }}
             placeholder="#333555777"
+            className={`${error ? 'error' : null}`}
           />
           <button type="submit" className="btn">
             Generate
@@ -31,8 +39,11 @@ const App = () => {
         </form>
       </section>
 
-      <section cla>
-        <h3> list goes here</h3>
+      <section className="colors">
+        {lst.map((color, index) => {
+          console.log(color)
+          return <SingleColor key={index} {...color} index={index} />
+        })}
       </section>
     </>
   )
